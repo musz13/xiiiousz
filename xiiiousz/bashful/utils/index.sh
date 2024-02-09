@@ -18,14 +18,13 @@ xiiiousz_utils() {
             exit 1
             ;;
         esac
-        echo "xiiiousz_utils - imported package: $condition"
+        echo "${YELLOW}xiiiousz_utils ${NC}- imported package: $condition"
     done
 
-    echo "Utils imported successfully."
+    echo "${YELLOW}Utils imported successfully.${NC}"
 }
 
 # import test
 get_indexed_input_validator() {
     echo "$UTILS_DIRECTORY/input_validator.sh"
-    source "$UTILS_DIRECTORY/input_validator.sh"
 }

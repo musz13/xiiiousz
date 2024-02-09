@@ -22,12 +22,12 @@ xiiiousz_bashful() {
             indexed_packages+=("$indexed_package")
             ;;
         *)
-            echo "Invalid package."
+            echo "${RED}Invalid package."
             exit 1
             ;;
         esac
 
-        echo "xiiiousz - imported package: $condition"
+        echo "${YELLOW}xiiiousz ${NC}- $condition"
     done
 
     small_logo
@@ -54,7 +54,7 @@ get_indexed_utils() {
 small_logo() {
     echo "${YELLOW}$(printf '%.0s⚡' {1..31})${NC}"
     echo "${WHITE}$(printf '%.0s-' {1..62})${NC}"
-    echo "${BOLD_YELLOW} __  __  ___   ___   ___    ___    _   _   ___   ____"
+    echo "${YELLOW} __  __  ___   ___   ___    ___    _   _   ___   ____"
     echo " \ \/ / |_ _| |_ _| |_ _|  / _ \  | | | | / __| |_  /"
     echo "  >  <   | |   | |   | |  | (_) | | |_| | \__ \  / /"
     echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${NC}"

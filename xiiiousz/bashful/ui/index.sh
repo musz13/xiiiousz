@@ -34,10 +34,10 @@ xiiiousz_ui() {
             ;;
         esac
 
-        echo "xiiiousz_ui - imported package: $condition"
+        echo "${YELLOW}xiiiousz_ui ${NC}- imported package: $condition"
     done
 
-    echo "UI imported successfully."
+    echo "${YELLOW}UI imported successfully.${NC}"
 
     # Access the indexed scripts as an array
     # for package in "${indexed_packages[@]}"; do
@@ -48,20 +48,16 @@ xiiiousz_ui() {
 # import test
 get_indexed_colours() {
     echo "$UI_DIRECTORY/colours.sh"
-    source "$UI_DIRECTORY/colours.sh"
 }
 
 get_indexed_loading_animation() {
     echo "$UI_DIRECTORY/loading_animation.sh"
-    source "$UI_DIRECTORY/loading_animation.sh"
 }
 
 get_indexed_menu() {
     echo "$UI_DIRECTORY/menu.sh"
-    source "$UI_DIRECTORY/menu.sh"
 }
 
 get_indexed_list() {
     echo "$UI_DIRECTORY/list.sh"
-    source "$UI_DIRECTORY/list.sh"
 }
