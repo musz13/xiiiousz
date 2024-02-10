@@ -1,18 +1,23 @@
 #!/bin/bash
 
 # Import other function
-source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
-source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
-source "$XIIIOUSZ_HOME/bashful/theme.sh"              #theme
+source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh"    #colours
+source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"      #fonts
+source "$XIIIOUSZ_HOME/bashful/user/theme.sh"            #theme
+source "$XIIIOUSZ_HOME/bashful/user/user_directories.sh" #user_directories
+source "$XIIIOUSZ_HOME/bashful/user/user_headers.sh"     #user_headers
 
 # ### built in: colours, theme
 
 # Function to index xiiiousz based on package imported
 xiiiousz() {
+    start_timer
     clear
     small_logo
     local conditions=("$@")
     local indexed_packages=()
+    local total_conditions="${#conditions[@]}"
+    local current_index=0
 
     for condition in "${conditions[@]}"; do
         case "$condition" in
@@ -28,8 +33,9 @@ xiiiousz() {
             ;;
         esac
 
-        echo "${XIIIOUSZ_COLOUR_01}xiiiousz ${COLOUR_DEFAULT}-  $condition"
+        echo "${XIIIOUSZ_COLOUR_01}xiiiousz ${NC}-  $condition"
     done
+    stop_timer
 }
 
 # import test
@@ -44,8 +50,8 @@ get_indexed_utils() {
 }
 
 get_indexed_theme() {
-    echo "$XIIIOUSZ_HOME/bashful/theme.sh"
-    source "$XIIIOUSZ_HOME/bashful/theme.sh"
+    echo "$XIIIOUSZ_HOME/bashful/user/theme.sh"
+    source "$XIIIOUSZ_HOME/bashful/user/theme.sh"
 }
 
 small_logo() {
@@ -53,14 +59,14 @@ small_logo() {
     XIIIOUSZ_COLOUR_02=${WHITE}
     echo " "
     echo " "
-    echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${COLOUR_DEFAULT}"
-    echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${COLOUR_DEFAULT}"
+    echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${NC}"
+    echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${NC}"
     echo "${XIIIOUSZ_COLOUR_01} __  __  ___   ___   ___    ___    _   _   ___   ____"
     echo " \ \/ / |_ _| |_ _| |_ _|  / _ \  | | | | / __| |_  /"
     echo "  >  <   | |   | |   | |  | (_) | | |_| | \__ \  / /"
-    echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${COLOUR_DEFAULT}"
-    echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${COLOUR_DEFAULT}"
-    echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${COLOUR_DEFAULT}"
+    echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${NC}"
+    echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${NC}"
+    echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${NC}"
     echo " "
     echo " "
 }
@@ -72,4 +78,21 @@ hide_cursor() {
 
 show_cursor() {
     tput cnorm # Show the cursor
+}
+
+# Function to get current time in milliseconds
+current_time_in_ms() {
+    date +%s%N | cut -b1-13
+}
+
+# Function to start the timer
+start_timer() {
+    start_time=$(current_time_in_ms)
+}
+
+# Function to stop the timer and print the duration
+stop_timer() {
+    end_time=$(current_time_in_ms)
+    duration=$((end_time - start_time))
+    echo "Execution time: ${duration}ms"
 }

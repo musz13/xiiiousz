@@ -2,6 +2,7 @@
 
 # Function to index xiiiousz_bashful based on package imported
 xiiiousz_bashful() {
+    start_timer
     local bashful_directory="$XIIIOUSZ_HOME/bashful"
     local conditions=("$@")
     local indexed_packages=()
@@ -15,12 +16,10 @@ xiiiousz_bashful() {
             ;;
         "utils")
             source "$bashful_directory/utils/index.sh"
-            # indexed_package=$(get_indexed_utils)
             indexed_packages+=("$indexed_package")
             ;;
         "theme")
-            source "$bashful_directory/theme.sh"
-            # indexed_package=$(get_indexed_theme)
+            source "$bashful_directory/user/theme.sh"
             indexed_packages+=("$indexed_package")
             ;;
         *)
@@ -32,7 +31,7 @@ xiiiousz_bashful() {
         # echo "${BASHFUL_COLOUR_01}xiiiousz-bashful ${COLOUR_DEFAULT}-  $condition"
     done
     echo "${BASHFUL_COLOUR_01}BASHFUL Imported Successfully ${COLOUR_DEFAULT}"
-
+    stop_timer
 }
 
 bashful_small_logo() {

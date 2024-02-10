@@ -2,6 +2,7 @@
 
 # Function to index xiiiousz_ui based on package imported
 xiiiousz_ui() {
+    start_timer
     local UI_DIRECTORY="$XIIIOUSZ_HOME/bashful/ui/package"
     local conditions=("$@")
     local indexed_packages=()
@@ -48,6 +49,7 @@ xiiiousz_ui() {
     # for package in "${indexed_packages[@]}"; do
     #     echo "Imported package: $package"
     # done
+    stop_timer
 }
 
 # import test

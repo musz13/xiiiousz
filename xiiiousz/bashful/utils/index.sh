@@ -2,6 +2,7 @@
 
 # Function to index xiiiousz_ui based on package imported
 xiiiousz_utils() {
+    start_timer
     local UTILS_DIRECTORY="$XIIIOUSZ_HOME/bashful/utils/package"
     local conditions=("$@")
     local indexed_packages=()
@@ -52,6 +53,7 @@ xiiiousz_utils() {
     done
 
     echo "${BASHFUL_COLOUR_01}Utils imported successfully.${NC}"
+    stop_timer
 }
 
 # import test
