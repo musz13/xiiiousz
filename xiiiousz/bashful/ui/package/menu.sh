@@ -43,3 +43,74 @@ function simple_menu_clear() {
     echo " "
     echo " "
 }
+
+# Function to display the styled menu
+menu_02() {
+    local title=$1
+    local options=("$@")
+    local equalSigns="="
+    # local width=$(tput cols)
+    local width=62
+    # Calculate padding for the title
+    local titleLength=${#title}
+    local padding=$(((width - titleLength) / 2))
+
+    shift
+
+    for ((i = 1; i < width; i++)); do
+        equalSigns+="="
+    done
+
+    echo " "
+    echo " "
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    # Add padding to center the title
+    for ((i = 0; i < padding; i++)); do
+        echo -n " "
+    done
+    echo "${BOLD}${COLOUR_01}${title}${RESET_FONTS}"
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    # Display numbered menu options
+    for ((i = 0; i < ${#options[@]}; i++)); do
+        echo "${BOLD}${COLOUR_01}$((i + 1)). ${RESET_FONTS}${COLOUR_02}${options[i]}${COLOUR_DEFAULT}${RESET_FONTS}"
+
+    done
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    echo " "
+    echo " "
+}
+
+menu_02_clear() {
+    local title=$1
+    local options=("$@")
+    local equalSigns="="
+    # local width=$(tput cols)
+    local width=62
+    # Calculate padding for the title
+    local titleLength=${#title}
+    local padding=$(((width - titleLength) / 2))
+
+    shift
+    clear
+    for ((i = 1; i < width; i++)); do
+        equalSigns+="="
+    done
+
+    echo " "
+    echo " "
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    # Add padding to center the title
+    for ((i = 0; i < padding; i++)); do
+        echo -n " "
+    done
+    echo "${BOLD}${COLOUR_01}${title}${RESET_FONTS}"
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    # Display numbered menu options
+    for ((i = 0; i < ${#options[@]}; i++)); do
+        echo "${BOLD}${COLOUR_01}$((i + 1)). ${RESET_FONTS}${COLOUR_02}${options[i]}${COLOUR_DEFAULT}${RESET_FONTS}"
+
+    done
+    echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
+    echo " "
+    echo " "
+}

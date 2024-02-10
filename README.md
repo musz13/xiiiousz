@@ -64,6 +64,8 @@ must add on top of bash file
 
 `source "$XIIIOUSZ"`
 
+`xiiiousz"bashful"`
+
 `xiiiousz_bashful "ui" "utils"`
 
 import based on what package you are using. example: ui

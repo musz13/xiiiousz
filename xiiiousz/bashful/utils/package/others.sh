@@ -22,11 +22,11 @@ isValidUUID() {
 # file to byte
 
 # -- Example usage
-echo "Generated UUID: $(generateUUID)"
+# echo "Generated UUID: $(generateUUID)"
 
-uuidToValidate="550e8400-e29b-41d4-a716-446655440000"
-if [ "$(isValidUUID "$uuidToValidate")" == "true" ]; then
-    echo "Valid UUID: $uuidToValidate"
-else
-    echo "Invalid UUID: $uuidToValidate"
-fi
+# uuidToValidate="550e8400-e29b-41d4-a716-446655440000"
+# if [ "$(isValidUUID "$uuidToValidate")" == "true" ]; then
+#     echo "Valid UUID: $uuidToValidate"
+# else
+#     echo "Invalid UUID: $uuidToValidate"
+# fi

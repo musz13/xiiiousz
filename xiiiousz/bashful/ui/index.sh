@@ -39,10 +39,10 @@ xiiiousz_ui() {
             ;;
         esac
 
-        echo "${COLOUR_01}xiiiousz_ui ${COLOUR_DEFAULT}- imported package: $condition"
+        # echo "${BASHFUL_COLOUR_01}xiiiousz_ui ${NC}- imported package: $condition"
     done
 
-    echo "${COLOUR_01}UI imported successfully.${COLOUR_DEFAULT}"
+    echo "${BASHFUL_COLOUR_01}UI imported successfully.${NC}"
 
     # Access the indexed scripts as an array
     # for package in "${indexed_packages[@]}"; do

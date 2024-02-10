@@ -48,10 +48,10 @@ xiiiousz_utils() {
             exit 1
             ;;
         esac
-        echo "${COLOUR_01}xiiiousz_utils ${COLOUR_DEFAULT}- imported package: $condition"
+        # echo "${BASHFUL_COLOUR_01}xiiiousz_utils ${NC}- imported package: $condition"
     done
 
-    echo "${COLOUR_01}Utils imported successfully.${COLOUR_DEFAULT}"
+    echo "${BASHFUL_COLOUR_01}Utils imported successfully.${NC}"
 }
 
 # import test
