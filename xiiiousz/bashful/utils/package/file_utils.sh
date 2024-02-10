@@ -32,6 +32,49 @@ findFilesByType() {
     find "$directory" -type f -name "*.$fileType"
 }
 
+# file to bytes
+fileToBytes() {
+    local file_path="$1"
+    local result=""
+
+    if [ -f "$file_path" ]; then
+        result=$(hexdump -e '16/1 "%02x "' -e '"\n"' "$file_path")
+        # result=$(hexdump -e '16/1 "%02x "' -e '"\n"' "$file_path" | fold -w 76) #fold if needed
+    else
+        result="Error: File not found."
+    fi
+
+    echo "$result"
+}
+
+# file to hexdump
+fileToHex() {
+    local file_path="$1"
+    local result=""
+
+    if [ -f "$file_path" ]; then
+        result=$(xxd -r -p "$file_path")
+    else
+        result="Error: File not found."
+    fi
+
+    echo "$result"
+}
+
+# file to base64
+fileToBase64() {
+    local file_path="$1"
+    local result=""
+
+    if [ -f "$file_path" ]; then
+        result=$(base64 "$file_path")
+    else
+        result="Error: File not found."
+    fi
+
+    echo "$result"
+}
+
 # -- Example usage
 # filePath="$XIIIOUSZ_HOME/bashful/utils/package/string_utils.sh"
 # directory="$PWD"
@@ -49,3 +92,7 @@ findFilesByType() {
 # foundFilesByType=$(findFilesByType "$directory" "$fileTypeToFind")
 # echo "Files found by type:"
 # echo "$foundFilesByType"
+
+# fileToBytes "$XIIIOUSZ_HOME/xiiiousz.sh"
+# fileToHex "$XIIIOUSZ_HOME/xiiiousz.sh"
+# fileToBase64 "$XIIIOUSZ_HOME/xiiiousz.sh"

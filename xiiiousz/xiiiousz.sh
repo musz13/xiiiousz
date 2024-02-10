@@ -6,6 +6,7 @@ source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"      #fonts
 source "$XIIIOUSZ_HOME/bashful/user/theme.sh"            #theme
 source "$XIIIOUSZ_HOME/bashful/user/user_directories.sh" #user_directories
 source "$XIIIOUSZ_HOME/bashful/user/user_headers.sh"     #user_headers
+source "$XIIIOUSZ_HOME/bashful/user/user.sh"             #user
 
 # ### built in: colours, theme
 
