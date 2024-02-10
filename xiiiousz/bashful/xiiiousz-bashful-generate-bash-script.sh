@@ -3,6 +3,8 @@
 source $XIIIOUSZ
 xiiiousz "bashful"
 xiiiousz_bashful "~"
+clear
+small_logo
 
 # Prompt the user for a new file name
 read -p "${XIIIOUSZ_COLOUR_01}Enter the new file name (without extension): ${XIIIOUSZ_COLOUR_02}" new_file_name
