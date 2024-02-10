@@ -60,3 +60,92 @@ function get_valid_yn() {
 
     echo $response
 }
+
+# input (dynamic input)
+# # Example usage
+# # For a single input without repetition
+# result=$(userInput "email" "Enter a email  (non-repeat): ")
+# echo "Result: $result"
+
+# # Example usage
+# # For repeated input until "exit" is entered
+# results=$(userInput "float" "Enter an float : " "true" "exit")
+# echo "Results: ${results[@]}"
+
+userInput() {
+    local input_type="$1"
+    local prompt="$2"
+    local repeat="$3"
+    local exit_value="$4"
+
+    local valid_inputs=()
+    local valid=false
+
+    while true; do
+        # Reset the valid flag for each iteration
+        valid=false
+
+        read -p "$prompt" input
+
+        if [ "$input" == "$exit_value" ]; then
+            break
+        fi
+
+        case $input_type in
+        "any")
+            valid=true
+            ;;
+        "string")
+            if [[ -n "$input" ]]; then
+                valid=true
+            fi
+            ;;
+        "integer")
+            if [[ "$input" =~ ^[0-9]+$ ]]; then
+                valid=true
+            fi
+            ;;
+        "float")
+            # if [[ "$input" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            if [[ "$input" =~ ^[0-9]+\.[0-9]+$ ]]; then
+                valid=true
+            fi
+            ;;
+        "boolean")
+            if [[ "$input" =~ ^(true|false)$ ]]; then
+                valid=true
+            fi
+            ;;
+        "char")
+            if [[ "$input" =~ ^.$ ]]; then
+                valid=true
+            fi
+            ;;
+        "email")
+            local email_regex="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+            if [[ "$input" =~ $email_regex ]]; then
+                valid=true
+            fi
+            ;;
+        *)
+            valid=false
+            ;;
+        esac
+
+        if [ "$valid" == true ] && [ "$repeat" != "true" ]; then
+            valid_inputs=("$input")
+        elif [ "$valid" == true ] && [ "$repeat" == "true" ]; then
+            valid_inputs+=("$input")
+        fi
+
+        if [ "$valid" == true ] && [ "$repeat" != "true" ]; then
+            break
+        fi
+    done
+
+    if [ "$repeat" != "true" ]; then
+        echo "${valid_inputs[0]}"
+    elif [ "$repeat" == "true" ]; then
+        echo "${valid_inputs[@]}"
+    fi
+}

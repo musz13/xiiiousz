@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Function to index xiiiousz_ui based on package imported
-xiiiousz_utils() {
+# Function to index xiiiousz_bashful_ui based on package imported
+xiiiousz_bashful_utils() {
     start_timer
     local UTILS_DIRECTORY="$XIIIOUSZ_HOME/bashful/utils/package"
     local conditions=("$@")
@@ -44,12 +44,25 @@ xiiiousz_utils() {
             # indexed_package=$(get_indexed_others)
             indexed_packages+=("$indexed_package")
             ;;
+        "~")
+            for file in "$UTILS_DIRECTORY"/*."sh"; do
+                # echo "package: $file"
+
+                # Extract basename and store in another variable
+                baseName=$(basename "$file")
+                baseName="${baseName%.sh}"
+                # echo "Basename: $baseName"
+                echo "${BASHFUL_COLOUR_01}xiiiousz - BASHFUL utils ${NC}- imported package: $baseName"
+                source "$file"
+                indexed_packages+=("$indexed_package")
+            done
+            ;;
         *)
             echo "${COLOUR_ERROR}Invalid package."
             exit 1
             ;;
         esac
-        # echo "${BASHFUL_COLOUR_01}xiiiousz_utils ${NC}- imported package: $condition"
+        # echo "${BASHFUL_COLOUR_01}xiiiousz - BASHFUL utils ${NC}- imported package: $condition"
     done
 
     echo "${BASHFUL_COLOUR_01}Utils imported successfully.${NC}"

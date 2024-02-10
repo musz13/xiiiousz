@@ -34,6 +34,16 @@ to use, put the below code at the top of your newly created bash script
 
 ---
 
+#### USE All
+
+---
+
+must add on top of bash file
+`source "$XIIIOUSZ"`
+`xiiiousz "~"`
+
+---
+
 #### xiiiousz_bashful
 
 ---
@@ -60,14 +70,17 @@ to use, put the below code at the top of your newly created bash script
 
 ---
 
-must add on top of bash file
+1. must add on top of bash file
+   `source "$XIIIOUSZ"`
+   `xiiiousz "bashful"`
+2. import all (`xiiiousz_bashful` should be on top of import by its subsequent package)
+   `xiiiousz_bashful "~"` or by package `xiiiousz_bashful "ui" "utils"`
 
-`source "$XIIIOUSZ"`
+if import by package, you can:-
 
-`xiiiousz"bashful"`
+1. import based on what sub-package you are using. example: ui
+   `xiiiousz_bashful_ui "colours" "loading_animation"`
+2. import all in package utils.
+   `xiiiousz_bashful_utils "~"`
 
-`xiiiousz_bashful "ui" "utils"`
-
-import based on what package you are using. example: ui
-
-`xiiiousz_ui "colours" "loading_animation"`
+...

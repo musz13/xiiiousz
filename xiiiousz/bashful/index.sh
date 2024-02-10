@@ -18,9 +18,29 @@ xiiiousz_bashful() {
             source "$bashful_directory/utils/index.sh"
             indexed_packages+=("$indexed_package")
             ;;
-        "theme")
-            source "$bashful_directory/user/theme.sh"
-            indexed_packages+=("$indexed_package")
+        "~")
+            for file in "$bashful_directory"/*/"index.sh"; do
+                # echo "package: $file"
+
+                # Extract basename and store in another variable
+                baseName=$(echo "$file" | rev | cut -d'/' -f2 | rev)
+                # baseName="${baseName%.sh}"
+                # echo "Basename: $baseName"
+                echo "${BASHFUL_COLOUR_01}BASHFUL ${NC}- imported package: $baseName"
+                source "$file"
+                indexed_packages+=("$indexed_package")
+                for package_file in "$bashful_directory"/$baseName/"package"/*."sh"; do
+                    # echo "$baseName package: $package_file"
+
+                    # Extract basename and store in another variable
+                    package_name=$(basename "$package_file")
+                    package_name="${package_name%.sh}"
+                    # echo "Basename: $baseName"
+                    # echo "${BASHFUL_COLOUR_01}xiiiousz - bashful-$baseName ${NC}- imported package: $package_name"
+                    source "$package_file"
+                    indexed_packages+=("$indexed_package")
+                done
+            done
             ;;
         *)
             echo "${COLOUR_ERROR}Invalid package."

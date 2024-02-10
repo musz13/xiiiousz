@@ -28,6 +28,9 @@ xiiiousz() {
             # indexed_package=$(get_indexed_ui)
             indexed_packages+=("$indexed_package")
             ;;
+        "~")
+            use_all_package
+            ;;
         *)
             echo "${RED}Invalid package."
             exit 1
@@ -96,4 +99,42 @@ stop_timer() {
     end_time=$(current_time_in_ms)
     duration=$((end_time - start_time))
     echo "Execution time: ${duration}ms"
+}
+
+use_all_package() {
+    # Loop through immediate folders in the specified directory
+    for folder in "$XIIIOUSZ_HOME"/*/; do
+        # Check if it's a directory
+        if [ -d "$folder" ]; then
+            echo "Processing folder: $folder"
+
+            # Get the basename of the folder
+            basename_folder=$(basename "$folder")
+
+            echo "Basename of the folder: $basename_folder"
+
+            # Loop through files in the current folder
+            for file in "$folder"/*; do
+                # Check if the file is named "index.sh"
+                if [ "$(basename "$file")" == "index.sh" ]; then
+                    echo "Found index.sh in folder: $folder"
+
+                    # Get the full path of the directory containing index.sh
+                    directory_containing_indexsh=$(dirname "$file")
+
+                    echo "Full path of the directory containing index.sh: $directory_containing_indexsh"
+                    source $directory_containing_indexsh/index.sh
+
+                    # Add your logic here for index.sh in each folder
+                    # For example, you can perform operations on index.sh
+                fi
+            done
+        fi
+        echo "${XIIIOUSZ_COLOUR_01}xiiiousz ${NC}-  $basename_folder"
+    done
+    import_all_xiiiousz_package
+}
+
+import_all_xiiiousz_package() {
+    xiiiousz_bashful "~"
 }

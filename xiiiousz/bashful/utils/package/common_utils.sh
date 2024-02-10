@@ -23,6 +23,7 @@ isInteger() {
 # Check if a variable is a valid float
 isFloat() {
     [[ $1 =~ ^[+-]?[0-9]*\.[0-9]+$ ]]
+    # [[ $1 =~ ^[0-9]+\.[0-9]+$ ]]
 }
 
 # Check if a variable is a boolean (true/false)
