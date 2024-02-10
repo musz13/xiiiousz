@@ -61,6 +61,13 @@ get_indexed_theme() {
 small_logo() {
     XIIIOUSZ_COLOUR_01=${YELLOW}
     XIIIOUSZ_COLOUR_02=${WHITE}
+    line_length=50 # Adjust this based on your desired line length
+    GREEK_XIIIOUSZ_TEXT="ξιιιουσζ"
+
+    # Calculate padding to center the text
+    padding=$(((line_length - ${#text}) / 2))
+
+    # Create the line with dashes and echo the text in the middle
     echo " "
     echo " "
     echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${NC}"
@@ -69,6 +76,8 @@ small_logo() {
     echo " \ \/ / |_ _| |_ _| |_ _|  / _ \  | | | | / __| |_  /"
     echo "  >  <   | |   | |   | |  | (_) | | |_| | \__ \  / /"
     echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${NC}"
+    echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${NC}"
+    echo "$(printf "%${padding}s%s%${padding}s" " " "${XIIIOUSZ_COLOUR_01}ξιιιουσζ" " ")"
     echo "${XIIIOUSZ_COLOUR_02}$(printf '%.0s-' {1..62})${NC}"
     echo "${XIIIOUSZ_COLOUR_01}$(printf '%.0s⚡' {1..31})${NC}"
     echo " "
