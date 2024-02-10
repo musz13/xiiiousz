@@ -40,6 +40,26 @@ currentDateTime() {
     date "+%Y-%m-%d %H:%M:%S"
 }
 
+# get Hours
+getHours() {
+    echo $(date +"%H")
+}
+
+# get Minutes
+getMinutes() {
+    echo $(date +"%M")
+}
+
+#  get Seconds
+getSeconds() {
+    echo $(date +"%S")
+}
+
+# get Miliseconds
+getMilliseconds() {
+    echo $(date +"%s%3N")
+}
+
 # Add minutes to a given date/time
 addMinutes() {
     local datetime="$1"
@@ -124,6 +144,12 @@ subtractYears() {
     date -d "$date - $years years" "+%Y-%m-%d"
 }
 
+# getHours
+
+# getMinutes
+
+# getMiliseconds
+
 # -- Example usage
 # echo "Current Date: $(currentDate)"
 # echo "Current Time: $(currentTime)"
@@ -140,3 +166,11 @@ subtractYears() {
 
 # newDateTime=$(subtractDays "$currentDate" 30)
 # echo "After subtracting 5 days: $newDateTime"
+
+# hours=$(getHours)
+# minutes=$(getMinutes)
+# seconds=$(getSeconds)
+# milliseconds=$(getMilliseconds)
+
+# echo "Current Time: $hours:$minutes:$seconds $days"
+# echo "Milliseconds since epoch: $milliseconds"
