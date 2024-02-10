@@ -2,6 +2,10 @@
 
 # Import other function
 source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
+source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
+source "$XIIIOUSZ_HOME/bashful/theme.sh"              #theme
+
+# ### built in: colours, theme
 
 # Function to index xiiiousz based on package imported
 xiiiousz_bashful() {
@@ -21,13 +25,18 @@ xiiiousz_bashful() {
             # indexed_package=$(get_indexed_utils)
             indexed_packages+=("$indexed_package")
             ;;
+        "theme")
+            source "$bashful_directory/theme.sh"
+            # indexed_package=$(get_indexed_theme)
+            indexed_packages+=("$indexed_package")
+            ;;
         *)
-            echo "${RED}Invalid package."
+            echo "${COLOUR_ERROR}Invalid package."
             exit 1
             ;;
         esac
 
-        echo "${YELLOW}xiiiousz ${NC}- $condition"
+        echo "${COLOUR_01}xiiiousz ${COLOUR_DEFAULT}-  $condition"
     done
 
     small_logo
@@ -49,15 +58,33 @@ get_indexed_utils() {
     source "$XIIIOUSZ_HOME/bashful/utils/index.sh"
 }
 
+get_indexed_theme() {
+    echo "$XIIIOUSZ_HOME/bashful/theme.sh"
+    source "$XIIIOUSZ_HOME/bashful/theme.sh"
+}
+
 #!/bin/bash
 
 small_logo() {
-    echo "${YELLOW}$(printf '%.0s⚡' {1..31})${NC}"
-    echo "${WHITE}$(printf '%.0s-' {1..62})${NC}"
-    echo "${YELLOW} __  __  ___   ___   ___    ___    _   _   ___   ____"
+    echo " "
+    echo " "
+    echo "${COLOUR_01}$(printf '%.0s⚡' {1..31})${COLOUR_DEFAULT}"
+    echo "${COLOUR_02}$(printf '%.0s-' {1..62})${COLOUR_DEFAULT}"
+    echo "${COLOUR_01} __  __  ___   ___   ___    ___    _   _   ___   ____"
     echo " \ \/ / |_ _| |_ _| |_ _|  / _ \  | | | | / __| |_  /"
     echo "  >  <   | |   | |   | |  | (_) | | |_| | \__ \  / /"
-    echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${NC}"
-    echo "${WHITE}$(printf '%.0s-' {1..62})${NC}"
-    echo "${YELLOW}$(printf '%.0s⚡' {1..31})${NC}"
+    echo " /_/\_\ |___| |___| |___|  \___/   \___/  |___/ /___|${COLOUR_DEFAULT}"
+    echo "${COLOUR_02}$(printf '%.0s-' {1..62})${COLOUR_DEFAULT}"
+    echo "${COLOUR_01}$(printf '%.0s⚡' {1..31})${COLOUR_DEFAULT}"
+    echo " "
+    echo " "
+}
+
+# ### other built in
+hide_cursor() {
+    tput civis # Hide the cursor
+}
+
+show_cursor() {
+    tput cnorm # Show the cursor
 }

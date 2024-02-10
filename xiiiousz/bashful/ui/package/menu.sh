@@ -1,6 +1,5 @@
 #!/bin/bash
 # Import other function
-source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
 
 # Function to display the menu
 # example: simple_menu "${RED}Terminal Menu" "Option 1" "${RED}Option 2" "Option 3" "Exit"
@@ -11,14 +10,14 @@ function simple_menu() {
 
     echo " "
     echo " "
-    echo "${MAGENTA}========== $title ${MAGENTA}==========${NC}"
+    echo "${COLOUR_01}========== $title ${COLOUR_01}==========${COLOUR_DEFAULT}"
 
     # Display numbered menu options
     for ((i = 0; i < ${#options[@]}; i++)); do
-        echo "$((i + 1)). ${options[i]}${NC}"
+        echo "${COLOUR_01}$((i + 1)). ${COLOUR_02}${options[i]}${COLOUR_DEFAULT}"
     done
 
-    echo "${MAGENTA}===================================${NC}"
+    echo "${COLOUR_01}===================================${COLOUR_DEFAULT}"
     echo " "
     echo " "
 }
@@ -33,14 +32,14 @@ function simple_menu_clear() {
     clear
     echo " "
     echo " "
-    echo "${MAGENTA}========== $title ${MAGENTA}==========${NC}"
+    echo "${COLOUR_01}========== $title ${COLOUR_01}==========${COLOUR_DEFAULT}"
 
     # Display numbered menu options
     for ((i = 0; i < ${#options[@]}; i++)); do
-        echo "$((i + 1)). ${options[i]}${NC}"
+        echo "${COLOUR_01}$((i + 1)). ${COLOUR_02}${options[i]}${COLOUR_DEFAULT}"
     done
 
-    echo "${MAGENTA}===================================${NC}"
+    echo "${COLOUR_01}===================================${COLOUR_DEFAULT}"
     echo " "
     echo " "
 }

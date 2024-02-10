@@ -20,24 +20,29 @@ xiiiousz_ui() {
             ;;
         "menu")
             source "$UI_DIRECTORY/menu.sh"
-            indexed_package=$(get_indexed_menu)
+            # indexed_package=$(get_indexed_menu)
             indexed_packages+=("$indexed_package")
             ;;
         "list")
             source "$UI_DIRECTORY/list.sh"
-            indexed_package=$(get_indexed_list)
+            # indexed_package=$(get_indexed_list)
+            indexed_packages+=("$indexed_package")
+            ;;
+        "progress")
+            source "$UI_DIRECTORY/progress.sh"
+            # indexed_package=$(get_indexed_progress)
             indexed_packages+=("$indexed_package")
             ;;
         *)
-            echo "Invalid package."
+            echo "${COLOUR_ERROR}Invalid package."
             exit 1
             ;;
         esac
 
-        echo "${YELLOW}xiiiousz_ui ${NC}- imported package: $condition"
+        echo "${COLOUR_01}xiiiousz_ui ${COLOUR_DEFAULT}- imported package: $condition"
     done
 
-    echo "${YELLOW}UI imported successfully.${NC}"
+    echo "${COLOUR_01}UI imported successfully.${COLOUR_DEFAULT}"
 
     # Access the indexed scripts as an array
     # for package in "${indexed_packages[@]}"; do
@@ -60,4 +65,8 @@ get_indexed_menu() {
 
 get_indexed_list() {
     echo "$UI_DIRECTORY/list.sh"
+}
+
+get_indexed_progress() {
+    echo "$UI_DIRECTORY/progress.sh"
 }

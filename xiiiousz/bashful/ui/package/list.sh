@@ -19,7 +19,7 @@ function simple_list() {
     local strings=("$@")
 
     for string in "${strings[@]}"; do
-        echo "$bullet $string"
+        echo "${COLOUR_01}$bullet ${COLOUR_02}$string${COLOUR_DEFAULT}"
     done
     echo " "
 }
@@ -33,7 +33,7 @@ function number_list() {
 
     # Display numbered list
     for ((i = 0; i < ${#strings[@]}; i++)); do
-        echo "$((i + 1)). ${strings[i]}${NC}"
+        echo "${COLOUR_01}$((i + 1)). ${COLOUR_02}${strings[i]}${COLOUR_DEFAULT}"
     done
 
     echo " "

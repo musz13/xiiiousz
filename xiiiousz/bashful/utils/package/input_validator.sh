@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # Import other function
-source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
 
 # Function to get a valid directory
 # example: directory=$(get_valid_directory "${BLUE}Enter Directory")
 function get_valid_directory() {
     local prompt=$1
     while true; do
-        read -p "$prompt (or '0' to exit): ${NC}" dir
+        read -p "$prompt (or '0' to exit): ${COLOUR_DEFAULT}" dir
 
         if [ "$dir" = "0" ]; then
             echo "$PWD"
@@ -26,7 +25,7 @@ function get_valid_directory() {
 function required_input() {
     local prompt=$1
     while true; do
-        read -p "$prompt : ${NC}" input
+        read -p "$prompt : ${COLOUR_DEFAULT}" input
 
         if [ -n "$input" ]; then
             echo "$input"
@@ -43,7 +42,7 @@ function get_valid_yn() {
     local response
 
     while true; do
-        read -p "$prompt ${NC} (y/n): " response
+        read -p "$prompt ${COLOUR_DEFAULT} (y/n): " response
 
         # Convert the response to lowercase
         response="${response,,}"

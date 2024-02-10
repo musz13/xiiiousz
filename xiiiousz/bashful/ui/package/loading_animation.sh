@@ -1,9 +1,8 @@
 # Import other function
-source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
 
 # Simple Loading Animation
 function loading_animation() {
-  local delay=0.05
+  local delay=0.1
   local duration=3
 
   for ((i = 0; i < duration; i++)); do
@@ -36,7 +35,8 @@ function dynamic_loading_animation() {
   local delay=0.1
   local count=0
   local end_time=$((SECONDS + 2))
-  local colors=("[1;31m" "[1;32m" "[1;33m" "[1;34m" "[1;35m" "[1;36m" "[1;37m") # Colors
+  # local colors=("[1;31m" "[1;32m" "[1;33m" "[1;34m" "[1;35m" "[1;36m" "[1;37m") # Colors
+  local colors=("${COLOUR_01}" "${COLOUR_02}") # theme
 
   while [ $SECONDS -lt $end_time ]; do
     count=$(((count + 1) % 4))
@@ -73,6 +73,8 @@ colour_spinner() {
   local spinstr="/-\|"
   local color1="$1"
   local color2="$2"
+  local color1="${1:-${COLOUR_01}}" # Default to COLOUR_01 if not provided
+  local color2="${2:-${COLOUR_02}}" # Default to COLOUR_02 if not provided
 
   tput civis # Hide the cursor
 
@@ -95,4 +97,29 @@ colour_spinner() {
   done
 
   tput cnorm # Show the cursor
+}
+
+dot_loading_animation() {
+  local duration=0.5
+  local max_length=7
+
+  local counter=0
+
+  # Hide the cursor
+  hide_cursor
+
+  while true; do
+    printf "${COLOUR_01}. "
+    sleep "$duration"
+
+    counter=$((counter + 1))
+
+    if [ "$counter" -eq "$max_length" ]; then
+      counter=0
+      printf "\r\e[K" # Move the cursor back to the beginning and clear the line
+    fi
+  done
+
+  # Show the cursor
+  show_cursor
 }
