@@ -39,6 +39,11 @@ xiiiousz_bashful_utils() {
             # indexed_package=$(get_indexed_file_utils)
             indexed_packages+=("$indexed_package")
             ;;
+        "object_utils")
+            source "$UTILS_DIRECTORY/object_utils.sh"
+            # indexed_package=$(get_indexed_object_utils)
+            indexed_packages+=("$indexed_package")
+            ;;
         "others")
             source "$UTILS_DIRECTORY/others.sh"
             # indexed_package=$(get_indexed_others)
@@ -92,6 +97,10 @@ get_indexed_date_utils() {
 
 get_indexed_file_utils() {
     echo "$UTILS_DIRECTORY/file_utils.sh"
+}
+
+get_indexed_object_utils() {
+    echo "$UTILS_DIRECTORY/get_indexed_object_utils.sh"
 }
 
 get_indexed_others() {
