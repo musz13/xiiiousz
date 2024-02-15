@@ -28,6 +28,12 @@ xiiiousz() {
             # indexed_package=$(get_indexed_ui)
             indexed_packages+=("$indexed_package")
             ;;
+        "grepful")
+            local bashful_directory="$XIIIOUSZ_HOME/grepful"
+            source "$bashful_directory/index.sh"
+            # indexed_package=$(get_indexed_ui)
+            indexed_packages+=("$indexed_package")
+            ;;
         "~")
             use_all_package
             ;;
