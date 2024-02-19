@@ -28,6 +28,10 @@ to use, put the below code at the top of your newly created bash script
 
 `source "$XIIIOUSZ"`
 
+change directories, theme and others in user folder
+
+`ie. directories.sh, theme.sh, functions.sh, other.sh`
+
 ---
 
 ### PACKAGE
@@ -62,7 +66,8 @@ must add on top of bash file
 
 ###### xiiiousz_utils
 
-"input_validator"
+"input_validator"E/Documents/log-files/Mobilelife/current/Production/2024/02_February/2024-02-16"
+GREPFUL_OUTPUT_DIRECTORY="$XIIIOUSZ_HOME/grepful/file/output"
 
 ---
 
