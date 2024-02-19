@@ -144,6 +144,20 @@ subtractYears() {
     date -d "$date - $years years" "+%Y-%m-%d"
 }
 
+# Function to convert milliseconds to seconds
+msToSeconds() {
+    local milliseconds=$1
+    local seconds=$((milliseconds / 1000))
+    echo "$seconds"
+}
+
+# Function to convert milliseconds to minutes
+msToMinutes() {
+    local milliseconds=$1
+    local minutes=$((milliseconds / 60000))
+    echo "$minutes"
+}
+
 # getHours
 
 # getMinutes
@@ -174,3 +188,6 @@ subtractYears() {
 
 # echo "Current Time: $hours:$minutes:$seconds $days"
 # echo "Milliseconds since epoch: $milliseconds"
+
+# msToSeconds "$milliseconds"
+# msToMinutes "$milliseconds"

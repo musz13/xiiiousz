@@ -120,7 +120,7 @@ start_timer() {
 stop_timer() {
     end_time=$(current_time_in_ms)
     duration=$((end_time - start_time))
-    echo "Execution time: ${duration}ms"
+    echo "Execution time: ${duration} ms"
 }
 
 use_all_package() {
