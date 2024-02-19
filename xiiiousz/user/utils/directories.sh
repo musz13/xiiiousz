@@ -6,4 +6,3 @@ GREPFUL_SOURCE_DIRECTORY="$HOME/Documents/log-files/Mobilelife/current/Productio
 GREPFUL_OUTPUT_DIRECTORY="$XIIIOUSZ_HOME/grepful/file/output"
 XIIIOUSZ_DEFAULT_INPUT_DIRECTORY="$HOME/Documents/log-files/Mobilelife/current/Production/2024/02_February"
 XIIIOUSZ_DEFAULT_OUTPUT_DIRECTORY="$HOME/Documents/Bugs/MOBILELIFE/PROD-ISSUE/optimistic-locking/output"
-XIIIOUSZ_HOME="$HOME/Documents/GitHub/xiiiousz/xiiiousz"
