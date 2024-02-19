@@ -10,28 +10,27 @@ clear
 grepful_small_logo
 
 # Ask the user if they want to use the current directory
-read -p "${COLOUR_01}Use default directory as the search directory? (y/n):${COLOUR_02} " use_current_directory
+read -p "${COLOUR_01}Use default directory as the source directory? (y/n):${COLOUR_02} " use_current_directory
 
 cd "$GREPFUL_SOURCE_DIRECTORY" || exit
-
-echo "${COLOUR_01}Current Directory:${COLOUR_02} $GREPFUL_SOURCE_DIRECTORY"
 
 if [[ "$use_current_directory" == "y" || "$use_current_directory" == "Y" ]]; then
     current_directory="$GREPFUL_SOURCE_DIRECTORY"
     # current_directory="$GREPFUL_SOURCE_DIRECTORY/2024/02_February"
 else
     # Get user input for the search directory
-    read -p "${COLOUR_01}Enter the search directory:${COLOUR_02} " current_directory
+    read -p "${COLOUR_01}Enter the source directory:${COLOUR_02} " current_directory
 fi
 
 cd "$current_directory" || exit
 
-echo "${COLOUR_01}Current search directory?:${COLOUR_02} $PWD"
+echo "${COLOUR_01}Current source directory?:${COLOUR_02} $PWD"
 
 while true; do
     clear
     grepful_small_logo
     # Get user input for the input string
+    echo "${COLOUR_01}Current Source Directory:${COLOUR_02} $GREPFUL_SOURCE_DIRECTORY"
     read -p "${COLOUR_01}grep -raiEn (type 'e' to exit):${COLOUR_02} " input_string
 
     # Check if the user wants to exit

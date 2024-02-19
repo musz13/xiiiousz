@@ -63,3 +63,25 @@ bashful_small_logo() {
     echo "                            ${NC}${RESET_FONTS}"
 
 }
+
+bashful_mock_loading() {
+    duration=0.005
+    total_steps=25
+
+    # Simulate the task with dynamic progress
+    for ((step = 1; step <= total_steps; step++)); do
+        # draw_dynamic_progress_bar "$step" "$total_steps"
+        # number_progress "$step" "$total_steps"
+        # percentage_progress "$step" "$total_steps"
+        # draw_dynamic_progress_bar_number "$step" "$total_steps"
+        draw_dynamic_progress_bar_percentage "$step" "$total_steps"
+        sleep "$duration"
+    done
+    echo ""
+}
+
+bashful_line() {
+    echo ""
+    echo "${COLOUR_01}$(printf '%.0s-' {1..62})${NC}"
+    echo ""
+}

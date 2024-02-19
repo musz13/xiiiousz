@@ -1,7 +1,7 @@
 #!/bin/bash
 
 user_headers() {
-    # clear
+    clear
     echo " "
     echo " "
     echo "${COLOUR_01}$(printf '%.0s⚡' {1..31})${COLOUR_DEFAULT}"

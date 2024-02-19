@@ -3,18 +3,21 @@
 # Import other function
 source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
 source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
-source "$XIIIOUSZ_HOME/user/theme.sh"                 #theme
-source "$XIIIOUSZ_HOME/user/user_directories.sh"      #user_directories
-source "$XIIIOUSZ_HOME/user/user_headers.sh"          #user_headers
-source "$XIIIOUSZ_HOME/user/user.sh"                  #user
+# source "$XIIIOUSZ_HOME/user/theme.sh"                 #theme
+# source "$XIIIOUSZ_HOME/user/user_directories.sh"      #user_directories
+# source "$XIIIOUSZ_HOME/user/user.sh"                  #user
+# source "$XIIIOUSZ_HOME/user/user_ui.sh"               #user-ui
+# source "$XIIIOUSZ_HOME/user/user_functions.sh"        #user-functions
 
 # ### built in: colours, theme
 
 # Function to index xiiiousz based on package imported
 xiiiousz() {
+
     start_timer
-    clear
+
     small_logo
+
     local conditions=("$@")
     local indexed_packages=()
     local total_conditions="${#conditions[@]}"
@@ -44,6 +47,10 @@ xiiiousz() {
         esac
 
         echo "${XIIIOUSZ_COLOUR_01}xiiiousz ${NC}-  $condition"
+
+        # Import user
+        import_user
+
     done
     stop_timer
 }
@@ -152,4 +159,20 @@ use_all_package() {
 
 import_all_xiiiousz_package() {
     xiiiousz_bashful "~"
+}
+
+import_user() {
+    # Directory to search for .sh files
+    search_directory="$XIIIOUSZ_HOME/user"
+
+    # Use find to locate all .sh files and store them in an array
+    mapfile -t sh_files < <(find "$search_directory" -type f -name "*.sh")
+    # Loop through each .sh file
+    for file in "${sh_files[@]}"; do
+        # Extract the basename of the file
+        file_basename=$(basename "$file" .sh)
+        # Import package
+        source $file
+        echo "${XIIIOUSZ_COLOUR_01}User:${XIIIOUSZ_COLOUR_02} $file_basename"
+    done
 }
