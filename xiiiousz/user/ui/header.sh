@@ -15,3 +15,15 @@ user_headers() {
     echo " "
     echo " "
 }
+
+ibs_header() {
+    grails_operation=$1
+}
+
+rib_header() {
+    grails_operation=$1
+}
+
+bo_header() {
+    grails_operation=$1
+}
