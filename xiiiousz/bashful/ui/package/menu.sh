@@ -71,8 +71,8 @@ menu_02() {
     echo "${BOLD}${COLOUR_01}${title}${RESET_FONTS}"
     echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
     # Display numbered menu options
-    for ((i = 0; i < ${#options[@]}; i++)); do
-        echo "${BOLD}${COLOUR_01}$((i + 1)). ${RESET_FONTS}${COLOUR_02}${options[i]}${COLOUR_DEFAULT}${RESET_FONTS}"
+    for ((i = 1; i < ${#options[@]}; i++)); do
+        echo "${BOLD}${COLOUR_01}$((i)). ${RESET_FONTS}${COLOUR_02}${options[i]}${COLOUR_DEFAULT}${RESET_FONTS}"
 
     done
     echo "${BOLD}${COLOUR_01}${equalSigns}${RESET_FONTS}"
