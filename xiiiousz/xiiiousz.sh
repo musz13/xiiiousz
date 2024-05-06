@@ -9,6 +9,7 @@ source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
 # source "$XIIIOUSZ_HOME/user/user_ui.sh"               #user-ui
 # source "$XIIIOUSZ_HOME/user/user_functions.sh"        #user-functions
 source "$XIIIOUSZ_HOME/bashful/utils/package/input_validator.sh" # input_validator
+source "$XIIIOUSZ_HOME/bashful/ui/package/loading_animation.sh"  # loading
 
 # ### built in: colours, theme
 
@@ -186,6 +187,7 @@ update_xiiiousz() {
         echo "${XIIIOUSZ_COLOUR_01}UPDATING XIIIOUSZ ${NC}"
         cd $XIIIOUSZ_HOME
         git pull
+        enter_to_skip
     else
         echo "${XIIIOUSZ_COLOUR_01}XIIIOUSZ ${NC}"
         # The user chose 'no' or 'n', so they need to select a file
