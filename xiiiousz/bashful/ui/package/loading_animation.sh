@@ -123,3 +123,8 @@ dot_loading_animation() {
   # Show the cursor
   show_cursor
 }
+
+enter_to_skip() {
+  read -p "" enter
+  unset enter
+}

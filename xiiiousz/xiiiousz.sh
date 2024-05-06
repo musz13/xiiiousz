@@ -8,11 +8,13 @@ source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
 # source "$XIIIOUSZ_HOME/user/user.sh"                  #user
 # source "$XIIIOUSZ_HOME/user/user_ui.sh"               #user-ui
 # source "$XIIIOUSZ_HOME/user/user_functions.sh"        #user-functions
+source "$XIIIOUSZ_HOME/bashful/utils/package/input_validator.sh" # input_validator
 
 # ### built in: colours, theme
 
 # Function to index xiiiousz based on package imported
 xiiiousz() {
+    update_xiiiousz
 
     start_timer
 
@@ -175,4 +177,17 @@ import_user() {
         source $file
         echo "${XIIIOUSZ_COLOUR_01}User:${XIIIOUSZ_COLOUR_02} $file_basename"
     done
+}
+
+update_xiiiousz() {
+    update_me=$(get_valid_yn "${YELLOW}Update XIIIOUSZ?${NC}")
+    # Check if the result of yn_validator is false (0) or true (1)
+    if [[ $update_me == "y" ]]; then
+        echo "${XIIIOUSZ_COLOUR_01}UPDATING XIIIOUSZ ${NC}"
+        cd $XIIIOUSZ_HOME
+        git pull
+    else
+        echo "${XIIIOUSZ_COLOUR_01}XIIIOUSZ ${NC}"
+        # The user chose 'no' or 'n', so they need to select a file
+    fi
 }

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Import other function
+source "$XIIIOUSZ_HOME/bashful/ui/package/colours.sh" #colours
+source "$XIIIOUSZ_HOME/bashful/ui/package/fonts.sh"   #fonts
 
 # Function to get a valid directory
 # example: directory=$(get_valid_directory "${BLUE}Enter Directory")
@@ -148,4 +150,29 @@ userInput() {
     elif [ "$repeat" == "true" ]; then
         echo "${valid_inputs[@]}"
     fi
+}
+
+# Function to validate "y/n" input
+yn_input() {
+    local input_message="$1"
+    local user_input
+    local result
+
+    while true; do
+        read -p "$input_message" user_input
+        user_input=$(echo "$user_input" | tr '[:upper:]' '[:lower:]') # Convert to lowercase for case-insensitive comparison
+
+        if [ "$user_input" == "y" ] || [ "$user_input" == "yes" ]; then
+            echo "result: $result"
+            result=0 # Set the result to true (0) for 'y' or 'yes'
+            break    # Exit the loop
+        elif [ "$user_input" == "n" ] || [ "$user_input" == "no" ]; then
+            result=1 # Set the result to false (1) for 'n' or 'no'
+            break    # Exit the loop
+        else
+            echo "Invalid input. Please enter 'y' or 'n' (or 'yes' or 'no')."
+        fi
+    done
+
+    return "$result"
 }
