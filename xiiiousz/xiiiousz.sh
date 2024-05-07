@@ -177,3 +177,18 @@ import_user() {
         echo "${XIIIOUSZ_COLOUR_01}User:${XIIIOUSZ_COLOUR_02} $file_basename"
     done
 }
+
+update_xiiiousz_prompt() {
+    local input=$(get_valid_yn "${XIIIOUSZ_COLOUR_01}Update XIIIOUSZ${NC}")
+    if [ "$input" = "y" ]; then
+        echo "${XIIIOUSZ_COLOUR_01}Updating XIIIOUSZ${NC}"
+        XIIIOUSZ_PARENT=$(dirname "$XIIIOUSZ_HOME")
+        git --git-dir="$XIIIOUSZ_PARENT/.git" --work-tree="$XIIIOUSZ_PARENT" pull
+        enter_to_skip
+        loading_animation
+    else
+        echo "${XIIIOUSZ_COLOUR_01}Retain Current Version${NC}"
+        enter_to_skip
+        loading_animation
+    fi
+}
