@@ -188,7 +188,7 @@ update_xiiiousz_prompt() {
         loading_animation
     else
         echo "${XIIIOUSZ_COLOUR_01}Retain Current Version${NC}"
-        enter_to_skip
+        # enter_to_skip
         loading_animation
     fi
 }
