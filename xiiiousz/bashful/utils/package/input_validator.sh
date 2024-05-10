@@ -27,7 +27,7 @@ function get_valid_directory() {
 function required_input() {
     local prompt=$1
     while true; do
-        read -p "$prompt : ${COLOUR_DEFAULT}" input
+        read -p "$prompt${COLOUR_ERROR}*${COLOUR_DEFAULT}:" input
 
         if [ -n "$input" ]; then
             echo "$input"
@@ -184,7 +184,7 @@ function get_valid_yn_y() {
     local response
 
     while true; do
-        read -p "$prompt ${COLOUR_DEFAULT} (y/n (or Enter as y)): " response
+        read -p "$prompt ${COLOUR_DEFAULT} (y/n or Enter as y): " response
 
         # Convert the response to lowercase
         response="${response,,}"
@@ -216,7 +216,7 @@ function get_valid_yn_n() {
     local response
 
     while true; do
-        read -p "$prompt ${COLOUR_DEFAULT} (y/n (or Enter as n)): " response
+        read -p "$prompt ${COLOUR_DEFAULT} (y/n or Enter as n): " response
 
         # Convert the response to lowercase
         response="${response,,}"
