@@ -295,6 +295,33 @@ arrayReduce() {
     echo "$accumulator"
 }
 
+# arrayFindElement
+arrayFindElement() {
+    local element=$1
+    shift
+    local array=("$@")
+    for item in "${array[@]}"; do
+        if [[ "$item" == "$element" ]]; then
+            echo "$element"
+            return 0 # Found
+        fi
+    done
+    return 1 # Not found
+}
+
+arrayFindSubstring() {
+    local substring=$1
+    shift
+    local array=("$@")
+    for item in "${array[@]}"; do
+        if [[ "$item" == *"$substring"* ]]; then
+            echo "$item"
+            return 0 # Found
+        fi
+    done
+    return 1 # Not found
+}
+
 # -- Example usage
 # myArray=("watermelon" "apple" "banana" "orange")
 # myArray=()
@@ -354,6 +381,10 @@ arrayReduce() {
 # # arrayFind
 # found=$(arrayFind "banana" "${original[@]}")
 # echo "arrayFind: $found"
+
+# # arrayFindElement
+# found=$(arrayFindElement "banana" "${original[@]}")
+# echo "arrayFindElement: $found"
 
 # # Example usage
 # original=("apple" "banana" "cherry" "date" "banana" "fig" "grape")

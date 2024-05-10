@@ -176,3 +176,67 @@ yn_input() {
 
     return "$result"
 }
+
+# Function to validate "y/n" input and auto yes if empty
+function get_valid_yn_y() {
+    local prompt=$1
+    local valid_responses=("y" "n" "yes" "no")
+    local response
+
+    while true; do
+        read -p "$prompt ${COLOUR_DEFAULT} (y/n): " response
+
+        # Convert the response to lowercase
+        response="${response,,}"
+
+        # If response is empty, default to "yes"
+        if [ -z "$response" ]; then
+            response="y"
+            break
+        fi
+
+        # Map "yes" to "y" and "no" to "n"
+        case $response in
+        "yes") response="y" ;;
+        "no") response="n" ;;
+        esac
+
+        if [[ " ${valid_responses[@]} " =~ " $response " ]]; then
+            break
+        fi
+    done
+
+    echo $response
+}
+
+# Function to validate "y/n" input and auto no if empty
+function get_valid_yn_n() {
+    local prompt=$1
+    local valid_responses=("y" "n" "yes" "no")
+    local response
+
+    while true; do
+        read -p "$prompt ${COLOUR_DEFAULT} (y/n): " response
+
+        # Convert the response to lowercase
+        response="${response,,}"
+
+        # If response is empty, default to "yes"
+        if [ -z "$response" ]; then
+            response="n"
+            break
+        fi
+
+        # Map "yes" to "y" and "no" to "n"
+        case $response in
+        "yes") response="y" ;;
+        "no") response="n" ;;
+        esac
+
+        if [[ " ${valid_responses[@]} " =~ " $response " ]]; then
+            break
+        fi
+    done
+
+    echo $response
+}

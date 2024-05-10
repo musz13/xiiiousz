@@ -179,7 +179,7 @@ import_user() {
 }
 
 update_xiiiousz_prompt() {
-    local input=$(get_valid_yn "${XIIIOUSZ_COLOUR_01}Update XIIIOUSZ${NC}")
+    local input=$(get_valid_yn_n "${XIIIOUSZ_COLOUR_01}Update XIIIOUSZ${NC}")
     if [ "$input" = "y" ]; then
         echo "${XIIIOUSZ_COLOUR_01}Updating XIIIOUSZ${NC}"
         XIIIOUSZ_PARENT=$(dirname "$XIIIOUSZ_HOME")

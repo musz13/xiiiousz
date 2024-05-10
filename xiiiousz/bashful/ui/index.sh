@@ -34,6 +34,11 @@ xiiiousz_bashful_ui() {
             # indexed_package=$(get_indexed_progress)
             indexed_packages+=("$indexed_package")
             ;;
+        "others")
+            source "$UI_DIRECTORY/others.sh"
+            # indexed_package=$(get_indexed_progress)
+            indexed_packages+=("$indexed_package")
+            ;;
         "~")
             for file in "$UI_DIRECTORY"/*."sh"; do
                 # echo "package: $file"
