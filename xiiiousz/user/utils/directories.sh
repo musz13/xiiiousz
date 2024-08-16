@@ -17,10 +17,8 @@ CBP_UTILS_BASH_DIR="$HOME/Documents/GitHub/iMocha/CBP/bash-script/CBP-UTILS"
 
 # MBIB
 MBIB_PATH="$HOME/workspace/cbp/mbib"
-ALL_MBIB_REPO=("$MBIB_PATH/ibs" "$MBIB_PATH/ibutils" "$MBIB_PATH/core" "$MBIB_PATH/rib" "$MBIB_PATH/bo" "$MBIB_PATH/deployment" "$MBIB_PATH/notification")
+ALL_MBIB_REPO=("$MBIB_PATH/ibs" "$MBIB_PATH/ibutils" "$MBIB_PATH/core" "$MBIB_PATH/rib" "$MBIB_PATH/bo" "$MBIB_PATH/deployment" "$MBIB_PATH/notification" "$MBIB_PATH/helocbp")
 
 # CIB
 CIB_PATH="$HOME/workspace/cbp/cib"
-ALL_CIB_REPO=("$CIB_PATH/ibs" "$CIB_PATH/cib" "$CIB_PATH/bo" "$CIB_PATH/vizardry/bo" "$CIB_PATH/vizardry/bpm" "$CIB_PATH/vizardry/core" "$CIB_PATH/vizardry/ddbo" "$CIB_PATH/vizardry/ddsvc" "$CIB_PATH/vizardry/entrust" "$CIB_PATH/vizardry/ezmcom" "$CIB_PATH/vizardry/filemapper" "$CIB_PATH/vizardry/hsm" "$CIB_PATH/vizardry/ibs" "$CIB_PATH/vizardry/ibutils" "$CIB_PATH/vizardry/report" "$CIB_PATH/vizardry/soa" "$CIB_PATH/vizardry/ui-commons" "$CIB_PATH/deployment")
-
-
+ALL_CIB_REPO=("$CIB_PATH/ibs" "$CIB_PATH/cib" "$CIB_PATH/bo" "$CIB_PATH/vizardry/bo" "$CIB_PATH/vizardry/bpm" "$CIB_PATH/vizardry/core" "$CIB_PATH/vizardry/ddbo" "$CIB_PATH/vizardry/ddsvc" "$CIB_PATH/vizardry/entrust" "$CIB_PATH/vizardry/ezmcom" "$CIB_PATH/vizardry/filemapper" "$CIB_PATH/vizardry/hsm" "$CIB_PATH/vizardry/ibs" "$CIB_PATH/vizardry/ibutils" "$CIB_PATH/vizardry/report" "$CIB_PATH/vizardry/soa" "$CIB_PATH/vizardry/ui-commons" "$CIB_PATH/deployment" "$CIB_PATH/helobiz")
