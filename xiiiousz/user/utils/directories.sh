@@ -10,8 +10,12 @@ CURRENT_DATE=$(date +"%d-%m-%Y")
 
 # info: CBP
 # Created Bundle
-CBP_OUTPUT="$HOME/Desktop/bundle/output"
-CBP_INPUT="$HOME/Desktop/bundle/input"
+CBP_CREATE_BUNDLE_OUTPUT="$HOME/Desktop/bundle/output"
+CBP_CREATE_BUNDLE_INPUT="$HOME/Desktop/bundle/input"
+# Generate .war file
+CBP_CREATE_WAR_OUTPUT="$HOME/Desktop/Deploy/output"
+CBP_CREATE_WAR_INPUT="$HOME/Desktop/Deploy/input"
+
 MY_CBP_EXTERNAL_CONFIG="$HOME/etc/cbp/"
 CBP_UTILS_BASH_DIR="$HOME/Documents/GitHub/iMocha/CBP/bash-script/CBP-UTILS"
 
