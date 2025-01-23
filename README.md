@@ -56,18 +56,43 @@ must add on top of bash file
 
 ###### xiiiousz_ui
 
-"colours"
+[colours](./xiiiousz/bashful/ui/package/colours.sh)
 
-"loading_animation"
+[fonts](./xiiiousz/bashful/ui/package/fonts.sh)
 
-"menu""list"
+[list](./xiiiousz/bashful/ui/package/list.sh)
+
+[loading_animation](./xiiiousz/bashful/ui/package/loading_animation.sh)
+
+[menu](./xiiiousz/bashful/ui/package/menu.sh)
+
+[others](./xiiiousz/bashful/ui/package/others.sh)
+
+[progress](./xiiiousz/bashful/ui/package/progress.sh)
+
+[tittle](./xiiiousz/bashful/ui/package/title.sh)
 
 ---
 
 ###### xiiiousz_utils
 
-"input_validator"E/Documents/log-files/Mobilelife/current/Production/2024/02_February/2024-02-16"
-GREPFUL_OUTPUT_DIRECTORY="$XIIIOUSZ_HOME/grepful/file/output"
+[array_utils](./xiiiousz/bashful/utils/package/array_utils.sh)
+
+[common_utils](./xiiiousz/bashful/utils/package/common_utils.sh)
+
+[date_utils](./xiiiousz/bashful/utils/package/date_utils.sh)
+
+[excel_utils](./xiiiousz/bashful/utils/package/excel_utils.sh)
+
+[file_utils](./xiiiousz/bashful/utils/package/file_utils.sh)
+
+[input_validator](./xiiiousz/bashful/utils/package/input_validator.sh)
+
+[object_utils](./xiiiousz/bashful/utils/package/object_utils.sh)
+
+[others](./xiiiousz/bashful/utils/package/others.sh)
+
+[string_utils](./xiiiousz/bashful/utils/package/string_utils.sh)
 
 ---
 
