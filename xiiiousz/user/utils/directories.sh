@@ -15,6 +15,8 @@ CBP_CREATE_BUNDLE_INPUT="$HOME/Desktop/bundle/input"
 # Generate .war file
 CBP_CREATE_WAR_OUTPUT="$HOME/Desktop/Deploy/output"
 CBP_CREATE_WAR_INPUT="$HOME/Desktop/Deploy/input"
+# Copy log files
+CBP_LOG_OUTPUT="$HOME/Desktop/logs/output"
 
 MY_CBP_EXTERNAL_CONFIG="$HOME/etc/cbp/"
 CBP_UTILS_BASH_DIR="$HOME/Documents/GitHub/iMocha/CBP/bash-script/CBP-UTILS"
