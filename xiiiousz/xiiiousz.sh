@@ -108,8 +108,21 @@ show_cursor() {
 }
 
 # Function to get current time in milliseconds
+# current_time_in_ms() {
+#     date +%s%N | cut -b1-13
+# }
+
 current_time_in_ms() {
-    date +%s%N | cut -b1-13
+    if command -v gdate &>/dev/null; then
+        # macOS with coreutils installed via brew
+        gdate +%s%3N
+    elif date +%s%3N &>/dev/null; then
+        # Linux with GNU date
+        date +%s%3N
+    else
+        # macOS fallback: seconds * 1000 (no ms precision)
+        echo $(($(date +%s) * 1000))
+    fi
 }
 
 # Function to start the timer
@@ -118,8 +131,19 @@ start_timer() {
 }
 
 # Function to stop the timer and print the duration
+# stop_timer() {
+#     end_time=$(current_time_in_ms)
+#     duration=$((end_time - start_time))
+#     echo "Execution time: ${duration} ms"
+# }
+
 stop_timer() {
     end_time=$(current_time_in_ms)
+
+    # Strip any non-digit characters just in case
+    start_time=${start_time//[^0-9]/}
+    end_time=${end_time//[^0-9]/}
+
     duration=$((end_time - start_time))
     echo "Execution time: ${duration} ms"
 }
@@ -167,7 +191,18 @@ import_user() {
     search_directory="$XIIIOUSZ_HOME/user"
 
     # Use find to locate all .sh files and store them in an array
-    mapfile -t sh_files < <(find "$search_directory" -type f -name "*.sh")
+    # mapfile -t sh_files < <(find "$search_directory" -type f -name "*.sh")
+    if command -v mapfile >/dev/null 2>&1; then
+        # Linux/Bash 4+
+        mapfile -t sh_files < <(find "$search_directory" -type f -name "*.sh")
+    else
+        # macOS fallback
+        sh_files=()
+        while IFS= read -r file; do
+            sh_files+=("$file")
+        done < <(find "$search_directory" -type f -name "*.sh")
+    fi
+
     # Loop through each .sh file
     for file in "${sh_files[@]}"; do
         # Extract the basename of the file
