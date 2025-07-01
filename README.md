@@ -10,7 +10,7 @@ add the command in .bahsrc file to create global variable called XIIIOUSZ mapped
 
 `export XIIIOUSZ=$HOME/Documents/GitHub/xiiiousz/xiiiousz/xiiiousz.sh`
 
-`export XIIIOUSZ_HOME=$HOME/Documents/GitHub/xiiiousz`
+`export XIIIOUSZ_HOME=$HOME/Documents/GitHub/xiiiousz/xiiiousz`
 
 execute the command below to execute changes in bahsrc file
 
