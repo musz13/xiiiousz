@@ -56,7 +56,7 @@ must add on top of bash file
 
 ###### xiiiousz_ui
 
-[colours](./xiiiousz/bashful/ui/package/colours.sh)
+[colours](/xiiiousz/bashful/ui/package/colours.sh)
 
 [fonts](./xiiiousz/bashful/ui/package/fonts.sh)
 
